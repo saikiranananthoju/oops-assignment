@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Method</title>
+</head>
+
+<body>
+    <label for="site-search">Enter a user ID:</label>
+    <input type="search" id="searchId" name="q" />
+    <br /><br />
+    <button onclick="getD()">Get Details</button>
+    <br /><br />
+    <div id="d"></div>
+    <script>
+        function getD() {
+            let uname = document.getElementById("searchId").value;
+            data = fetch("https://jsonplaceholder.typicode.com/users/" + uname)
+            .then((response)=>response.json())
+            .then((json)=>{
+                document.getElementById("d").innerHTML=JSON.stringify(json);
+
+            });
+        }
+    </script>
+</body>
+
+</html>

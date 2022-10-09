@@ -1,0 +1,50 @@
+6.Add another button which makes a DELETE request to the same URL. In this case, the request must delete the record with the specified id entered in the textbox. Check by hitting the same URL to see if the record was deleted or not.
+
+<html>
+    <head>
+       
+    </head>
+    <body>
+        
+       <h3>Online JSON DELETE</h3>
+        <input type="button" value="REQUEST" onclick="JSONonlineDELETE()">
+        <hr>
+
+        <script>
+            var data = {
+                "id": 11,
+                "name": "Hassan Mashmoom",
+                "username": "HassanM",
+                "email": "Hassan@engineer.com",
+                "address": {
+                    "street": "Kulas Light",
+                    "suite": "Apt. 556",
+                    "city": "Gwenborough",
+                    "zipcode": "92998-3874",
+                    "geo": {
+                        "lat": "-37.3159",
+                        "lng": "81.1496"
+                    }
+                },
+                "phone": "1-770-736-8031 x56442",
+                "website": "hildegard.org",
+                "company": {
+                    "name": "Romaguera-Crona",
+                    "catchPhrase": "Multi-layered client-server neural-net",
+                    "bs": "harness real-time e-markets"
+                }
+            }
+            
+            function JSONonlineDELETE(){
+                var url = "https://jsonplaceholder.typicode.com/users/?id=";
+                fetch(url+data.id, {
+                    method: "DELETE"
+                }).then((response) => {
+                    response.json().then((res) => {
+                        console.log("Record Deleted: ",res);
+                    });
+                }).catch(err => console.log(err));
+            }
+        </script>
+    </body>
+</html>
